@@ -68,6 +68,8 @@ def generate_haiku(model):
             logging.debug('sentence failed to generate from model')
             continue
         logging.debug('sentence: ' + sentence)
+        sentence = sentence.rstrip(punctuation)
+        sentence = sentence[0].lower() + sentence[1:]
         haiku = detect_haiku(sentence)
         if haiku:
             return haiku
