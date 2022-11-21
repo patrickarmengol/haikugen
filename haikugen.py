@@ -1,5 +1,6 @@
-import markovify
 import logging
+import markovify
+import shelve
 from gutenberg_cleaner import super_cleaner
 from string import punctuation
 from syllablecount import count_syllables
@@ -88,8 +89,13 @@ def main():
         ('The Blue Castle, by Lucy Maud Montgomery', 'books/pg67979.txt')
     ]
 
-    # TODO: save models to disk to avoid retraining
     model_dict = {}
+    try:
+        with shelve.open('book_models.db', 'r') as db:
+            for k, v in db.items():
+                model_dict[k] = v
+    except:
+        pass
 
     user_command = 'b'
 
@@ -110,8 +116,9 @@ def main():
 
             print('checking if model is already trained...')
             model = model_dict.get(user_book_name)
-
-            if not model:
+            if model:
+                print('it is! we can skip training')
+            else:
                 print('training model...')
                 model = train_model(user_book_path)
                 model_dict[user_book_name] = model
@@ -147,6 +154,10 @@ e - exit
 > """)
         print()
 
+    print('saving models...')
+    with shelve.open('book_models.db') as db:
+        for k, v in model_dict.items():
+            db[k] = v
     print('bye')
 
 

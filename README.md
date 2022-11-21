@@ -43,6 +43,7 @@ s - save haiku to file
 e - exit
 > e
 
+saving models...
 bye
 ```
 
