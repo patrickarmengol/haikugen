@@ -5,47 +5,57 @@ generate haikus with markov chains trained on books available from Project Guten
 ## Example
 
 ```
-0 - Moby-Dick; or The Whale, by Herman Melville
-1 - The Complete Works of William Shakespeare, by William Shakespeare
-2 - Middlemarch, by George Eliot
+1 - The Enchanted April, by Elizabeth Von Arnim
+2 - Little Women, by Louisa M. Alcott
 3 - A Room With A View, by E. M. Forster
-4 - The Enchanted April, by Elizabeth Von Arnim
-5 - Little Women, by Louisa M. Alcott
-6 - The Blue Castle, by Lucy Maud Montgomery
+4 - Moby-Dick; or The Whale, by Herman Melville
+5 - The Blue Castle, by Lucy Maud Montgomery
+6 - The Complete Works of William Shakespeare, by William Shakespeare
+7 - Middlemarch, by George Eliot
 
 pick a book by number
-> 2
+> 3
 
-selected book: Middlemarch, by George Eliot
+selected book: A Room With A View, by E. M. Forster
 checking if model is already trained...
 training model...
 generating a haiku...
 
-When he was to have
-the advantage over him,
-I think his own hands.
+and the horse was stopped,
+and Lucy suspected that
+he had intended
 
 g - generate another haiku
-b - pick a new book
 s - save haiku to file
+b - pick a new book
 e - exit
 > g
 
 generating a haiku...
 
-You will like to do
+you will like to do
 under the afternoon clouds
-that sailed in masses.
+that sailed in masses
 
 g - generate another haiku
-b - pick a new book
 s - save haiku to file
+b - pick a new book
+e - exit
+> s
+
+saving haiku to saved_haikus.txt...
+
+g - generate another haiku
+s - save haiku to file
+b - pick a new book
 e - exit
 > e
 
 saving models...
 bye
 ```
+
+
 
 ## Installation
 

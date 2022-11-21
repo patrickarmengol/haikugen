@@ -1,5 +1,8 @@
+# TODO: add comments
+
 import logging
 import markovify
+import os
 import shelve
 from gutenberg_cleaner import super_cleaner
 from string import punctuation
@@ -77,17 +80,16 @@ def generate_haiku(model):
 
 
 def main():
-    # TODO: automatically generate this based on books included in books dir
-    books = [
-        ('Moby-Dick; or The Whale, by Herman Melville', 'books/2701-0.txt'),
-        ('The Complete Works of William Shakespeare, by William Shakespeare',
-         'books/pg100.txt'),
-        ('Middlemarch, by George Eliot', 'books/pg145.txt'),
-        ('A Room With A View, by E. M. Forster', 'books/pg2641.txt'),
-        ('The Enchanted April, by Elizabeth Von Arnim', 'books/pg16389.txt'),
-        ('Little Women, by Louisa M. Alcott', 'books/pg37106.txt'),
-        ('The Blue Castle, by Lucy Maud Montgomery', 'books/pg67979.txt')
-    ]
+    books = []
+    for f in os.listdir('books'):
+        p = 'books/' + f
+        with open(p, 'r') as b:
+            #n = b.readline().split(' of ')[1].rstrip('\n')
+            l = b.readline()
+            i = l.find(' of ')
+            if i != -1:
+                n = l[i + 4:].rstrip('\n')
+                books.append((n, p))
 
     model_dict = {}
     try:
@@ -102,14 +104,14 @@ def main():
     while user_command != 'e':
         if user_command == 'b':
             print()
-            for i, (book_name, book_path) in enumerate(books):
+            for i, (book_name, book_path) in enumerate(books, start=1):
                 print(f'{i} - {book_name}')
 
             user_book_index = input(
                 '\npick a book by number\n> ')
-            while not user_book_index.isnumeric() or int(user_book_index) >= len(books):
+            while not user_book_index.isnumeric() or int(user_book_index) > len(books) or int(user_book_index) < 1:
                 user_book_index = input('please pick a book by number\n> ')
-            user_book_index = int(user_book_index)
+            user_book_index = int(user_book_index) - 1
 
             user_book_name, user_book_path = books[user_book_index]
             print(f'\nselected book: {user_book_name}')
