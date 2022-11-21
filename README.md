@@ -27,8 +27,10 @@ I think his own hands.
 
 g - generate another haiku
 b - pick a new book
+s - save haiku to file
 e - exit
 > g
+
 generating a haiku...
 
 You will like to do
@@ -37,8 +39,10 @@ that sailed in masses.
 
 g - generate another haiku
 b - pick a new book
+s - save haiku to file
 e - exit
 > e
+
 bye
 ```
 
