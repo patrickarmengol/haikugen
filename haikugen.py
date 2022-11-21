@@ -125,7 +125,12 @@ def main():
             print()
             print(haiku)
 
-        # TODO: save haikus to file
+        # TODO: allow user to specify output file
+        elif user_command == 's':
+            print('saving haiku to saved_haikus.txt...')
+            with open('saved_haikus.txt', 'a') as f:
+                f.write(haiku)
+                f.write(f'\n    - model based on {user_book_name}\n\n')
 
         else:
             print('unknown command')
@@ -134,6 +139,7 @@ def main():
         user_command = input(
             """
 g - generate another haiku
+s - save haiku to file
 b - pick a new book
 e - exit
 > """)
