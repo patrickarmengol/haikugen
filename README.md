@@ -61,14 +61,16 @@ bye
 
 ```
 git clone git@github.com:patrickarmengol/haikugen.git
+cd haikugen
 <do whatever virtual env stuff you want here>
 pip install nltk markovify gutenberg-cleaner
 ```
 
-launch python repl
+launch python repl: `python`
 ```
 > import nltk
 > nltk.download('cmudict')
+> exit()
 ```
 
 ## Usage
