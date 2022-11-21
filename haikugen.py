@@ -145,6 +145,7 @@ s - save haiku to file
 b - pick a new book
 e - exit
 > """)
+        print()
 
     print('bye')
 
